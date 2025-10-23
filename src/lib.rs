@@ -20,7 +20,7 @@ use header::FdtHeader;
 use node::MemoryReservation;
 
 /// A flattened devicetree located somewhere in memory
-/// 
+///
 #[derive(Clone, Copy)]
 pub struct LinuxFdt<'a> {
     data: &'a [u8],
@@ -96,6 +96,13 @@ impl<'a> LinuxFdt<'a> {
         node::find_node(&mut FdtData::new(self.structs_block()), "/chosen", self, None)
             .map(|node| Chosen { node })
             .expect("/chosen is required")
+    }
+
+    /// Returns interrupt controller node
+    pub fn interrupt_controller(&self) -> Option<InterruptController<'_, 'a>> {
+        let ic_node = self.all_nodes()
+            .find(|node| node.property("interrupt-controller").is_some())?;
+        Some(InterruptController { node: ic_node })
     }
 
     /// Return the reserved memory nodes
