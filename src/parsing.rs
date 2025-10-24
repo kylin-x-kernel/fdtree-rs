@@ -5,6 +5,7 @@
 use core::convert::TryInto;
 pub struct CStr<'a>(&'a [u8]);
 
+#[allow(dead_code)]
 impl<'a> CStr<'a> {
     pub fn new(data: &'a [u8]) -> Option<Self> {
         let end = data.iter().position(|&b| b == 0)?;

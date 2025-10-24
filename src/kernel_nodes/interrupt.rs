@@ -1,7 +1,6 @@
 //! Linux kernel chosen nodes
 
 use crate::node::FdtNode;
-use crate::standard_nodes::RegIter;
 
 /// Represents the node with interrupt-controller property
 #[derive(Debug, Clone, Copy)]
