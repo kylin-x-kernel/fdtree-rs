@@ -98,6 +98,12 @@ impl<'a> LinuxFdt<'a> {
             .expect("/chosen is required")
     }
 
+    /// Returns the DICE node
+    pub fn dice(&self) -> Option<Dice<'_, 'a>> {
+        node::find_node(&mut FdtData::new(self.structs_block()), "/chosen/dice", self, None)
+            .map(|node| Dice { node })
+    }
+
     /// Returns interrupt controller node
     pub fn interrupt_controller(&self) -> Option<InterruptController<'_, 'a>> {
         let ic_node = self.all_nodes()
