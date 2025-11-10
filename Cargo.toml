@@ -2,9 +2,12 @@
 name = "fdtree_rs"
 version = "0.1.0"
 edition = "2024"
-authors = ["Weikang Guo <guoweikang.kernel@gmail.com>"]
+authors = [
+    "Weikang Guo <guoweikang.kernel@gmail.com>", 
+    "KylinSoft Co., Ltd. <https://www.kylinos.cn/>"
+    ]
 description = "A pure-Rust #![no_std] crate for parsing Linux Flattened Devicetrees"
-license = "GPL-3.0-or-later OR Apache-2.0"
+license = "Apache-2.0"
 keywords = [
     "devicetree",
     "fdt",
